@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예매 페이지</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <script>
+        function confirmBooking() {
+            const performance = localStorage.getItem('selectedPerformance');
+            const quantity = document.getElementById('quantity').value;
+            const date = document.getElementById('date').value;
+
+            const bookingData = {
+                performance: performance,
+                quantity: quantity,
+                date: date
+            };
+
+            fetch('/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // 예매 완료 메시지 표시
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+<header class="bg-blue-600 p-4 text-white text-center">
+    <h1 class="text-4xl font-bold">예매 페이지</h1>
+</header>
+
+<main class="p-6">
+    <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">예매 정보 입력</h2>
+        <p class="mb-4">아래 정보를 입력하여 예매를 완료하세요.</p>
+
+        <div class="mb-4">
+            <label for="quantity" class="block mb-2">예매할 수량:</label>
+            <input type="number" id="quantity" min="1" class="border p-2 rounded w-full" placeholder="수량을 입력하세요">
+        </div>
+
+        <div class="mb-4">
+            <label for="date" class="block mb-2">예매할 날짜:</label>
+            <input type="date" id="date" class="border p-2 rounded w-full">
+        </div>
+
+        <button onclick="confirmBooking()" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-700">
+            예매하기
+        </button>
+    </section>
+</main>
+
+<footer class="bg-blue-600 p-4 text-white text-center">
+    <p>© 2024 공연 예매 사이트. All rights reserved.</p>
+</footer>
+</body>
+</html>

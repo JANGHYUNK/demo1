@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공연 예매 사이트</title>
     <link href="/dist/output.css" rel="stylesheet">
+    <script>
+        function goToBooking(performance) {
+            // 선택한 공연 정보를 저장하고 예매 페이지로 이동합니다.
+            localStorage.setItem('selectedPerformance', performance);
+            window.location.href = '/booking.html'; // 예매 페이지로 이동
+        }
+    </script>
 </head>
 <body class="bg-gray-100">
 <header class="bg-blue-600 p-4 text-white text-center">
@@ -12,55 +19,36 @@
 </header>
 
 <main class="p-6">
-    <!-- 공연 목록 -->
     <section class="my-8">
         <h2 class="text-2xl font-bold mb-4">공연 목록</h2>
         <div class="grid grid-cols-3 gap-6">
-            <!-- 각 공연 항목 -->
             <div class="bg-white shadow-md p-4 rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">데이식스와 엔믹스</h3>
+                <img src="https://via.placeholder.com/150" alt="오페라의 유령 포스터" class="mb-4 rounded">
+                <h3 class="text-xl font-semibold mb-2">뮤지컬: 오페라의 유령</h3>
                 <p class="text-gray-600 mb-2">장소: 예술의 전당</p>
                 <p class="text-gray-600 mb-4">날짜: 2024년 10월 15일</p>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <button onclick="goToBooking('오페라의 유령')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                     예매하기
                 </button>
             </div>
-            <!-- 추가 공연 항목들 -->
             <div class="bg-white shadow-md p-4 rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">오해원 특별공연</h3>
-                <p class="text-gray-600 mb-2">장소: 홍익대학교</p>
+                <img src="https://via.placeholder.com/150" alt="햄릿 포스터" class="mb-4 rounded">
+                <h3 class="text-xl font-semibold mb-2">연극: 햄릿</h3>
+                <p class="text-gray-600 mb-2">장소: 국립극장</p>
                 <p class="text-gray-600 mb-4">날짜: 2024년 11월 10일</p>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <button onclick="goToBooking('햄릿')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                     예매하기
                 </button>
             </div>
             <div class="bg-white shadow-md p-4 rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">콘서트: DAY6 World Tour</h3>
+                <img src="https://via.placeholder.com/150" alt="BTS World Tour 포스터" class="mb-4 rounded">
+                <h3 class="text-xl font-semibold mb-2">콘서트: BTS World Tour</h3>
                 <p class="text-gray-600 mb-2">장소: 서울 올림픽 주경기장</p>
                 <p class="text-gray-600 mb-4">날짜: 2024년 12월 05일</p>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <button onclick="goToBooking('BTS World Tour')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                     예매하기
                 </button>
             </div>
-        </div>
-    </section>
-
-    <!-- 좌석 선택 및 예약 -->
-    <section class="my-8">
-        <h2 class="text-2xl font-bold mb-4">좌석 선택</h2>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <p class="mb-4">원하는 좌석을 선택하세요:</p>
-            <div class="grid grid-cols-6 gap-2">
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">A1</button>
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">A2</button>
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">A3</button>
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">B1</button>
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">B2</button>
-                <button class="bg-gray-200 p-2 rounded hover:bg-blue-400">B3</button>
-            </div>
-            <button class="bg-green-500 text-white px-6 py-2 mt-4 rounded hover:bg-green-700">
-                예약하기
-            </button>
         </div>
     </section>
 </main>
